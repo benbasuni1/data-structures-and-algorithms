@@ -10,8 +10,8 @@
 9. Summary
 
 ## Intro
-**Edges** - Relationship between Entities  
-**Vertices** - Entities or Nodes  
+**Edges** - Node Relationships  between each other  
+**Vertices** - Nodes  
 **Undirected Graphs** - Edges have 0 or 1 directions.   
 **Directed Graphs** - Edges can have 0, 1 or 2 directions. 
 
@@ -183,34 +183,52 @@ const DFS = function(graph) {
 1. Get all vertices from graph
 2. If vertices is empty, just return
 3. Populate all vertices visited to false
-4. Implement DFS taking in vertex
-   Set visited to true  
-   Get all edges  
-   Iterate through all edges and recursively call DFSImpl if not yet visited
-5. Start DFS by iterating through vertices, if vertices has not yet been visited, call DFSImpl
+4. Create queue and insert top node
+5. Make sure top node is marked visited
+6. Loop when queue is not empty  
+    a. Shift from queue and set variable to v   
+    b. Grab all edges  
+    c. Loop through all edges    
+    * If edge has not been visited  
+    * Push edge to queue and mark visited  
 #### Code:
 ```js
 const BFS = function(graph) {
+
+  // Get all vertices from graph
   let vertices = graph.getVertices();
+
+  // If vertices is empty, just return
   if (vertices.length === 0) return;
 
+  // Populate all vertices to false
   let visited = {};
   for (let i = 0; i < vertices.length; i++) {
     visited[vertices[i]] = false;
   }
 
-  let queue = [];
-  let startV = vertices[0];
-  queue.push(startV);
-  visited[startV] = true;
+  // Create queue and insert top node
+  let queue = [vertices[0]];
 
+  // Make sure top node is marked visited
+  visited[vertices[0]] = true;
+
+  // Loop when queue is not empty
   while (queue.length > 0) {
+    
+    // Shift from queue and set to variable v
     let v = queue.shift();
+
+    // Grab all edges
     let edges = graph.getEdges(v);
 
+    // Loop through all edges
     for (let i = 0; i < edges.length; i++) {
       let e = edges[i];
+      // If the edge has not been visited
       if (!visited[e]) {
+
+        // push edge to queue and mark visited
         queue.push(e);
         visited[e] = true;
       }

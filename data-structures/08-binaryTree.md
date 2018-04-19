@@ -360,7 +360,13 @@ BST.prototype.size = function() {
 ```
 ## Depth First Search
 ##### Algorithm: 
-
+1. Set output as empty array
+2. Create recursive function implementDFS w/ tree as param  
+     a. Push the tree's value  
+     b. If the tree has a left node, recursively call implementDFS on left subtree  
+     b. If the tree has a right node, recursively call implementDFS on right subtree  
+3. Call implementDFS w/ tree as param
+4. Return output
 ##### Code: 
 ```js
 function DFS(tree) {
@@ -369,7 +375,7 @@ function DFS(tree) {
   let output = [];
 
   // Call Recursive function implementDFS with tree as parameter
-  let implementDFS(tree) {
+  let implementDFS = function(tree) {
 
     // Push the tree's value
     output.push(tree.val);
@@ -385,26 +391,47 @@ function DFS(tree) {
   // Call implement recursive function
   implementDFS(tree);
 
+  // Return output
   return output;
 }
 ```
 ## Breadth First Search
 ##### Algorithm: 
+1. Create queue with top node as val
+2. Create output array
+3. While queue is not empty   
+    a. Shift queue and store variable in node and add nodeVal into output  
+    c. If node.left exists, push node.left to queue   
+    d. If node.right exists, push node.right to queue   
+4. Return output
 
 ##### Code: 
 ```js
 function BFS(tree) {
+
+  // Create queue with top node as val
   let queue = [tree];
+  
+  // Create output array
   let output = [];
 
+  // While queue is not empty
   while (queue.length > 0) {
+
+    // Shift queue and store variable in node
     let node = queue.shift();
+
+    // Push node value
     output.push(node.val);
 
+    // If node.left exists, push node.left to queue
     if (node.left) queue.push(node.left);
+
+    // If node.right exists, push node.right to queue
     if (node.right) queue.push(node.right);
   }
 
+  // Return output
   return output;
 }
 ```
