@@ -30,7 +30,7 @@ isSorted (arr) :
 
   1. Iterate through arr
 
-  2. If current is greater than next element, return false
+  2. If current is greater than next element, return false  
 
   3. Return true
 ---------------------------------------------
