@@ -12,7 +12,7 @@ LRU is a very simple and a commonly used algorithm.
     2. Hash Map           - Helps with O(1) lookup of cached keys
     3. Think about Evictions
 
-### Space and Time Copmlexity:
+### Space and Time Complexity:
 ##### Time:
 ```
 Get - O(1)
