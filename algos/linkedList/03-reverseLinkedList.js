@@ -4,7 +4,7 @@
  *
  *   while (current)
  *      Set nodesToStillConnectTo to next
- *      Set the next pointer of current to the previous node
+ *      Set the current>next to the previous node
  *      Set prev to current node
  *      Iterate
  *
